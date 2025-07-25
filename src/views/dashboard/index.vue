@@ -45,7 +45,8 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+// import axios from "axios";
+import { getLinks } from "@/api/toFastGPT";
 
 export default {
   data() {
@@ -81,19 +82,16 @@ export default {
     },
   },
   methods: {
-    async fetchLinks() {
+    fetchLinks() {
       this.loading = true;
       this.error = null;
-      try {
-        const { data } = await axios.get("http://192.168.10.46:3018/api/links");
-        this.links = data || [];
-        console.log("获取数据成功:", this.links);
-      } catch (err) {
-        this.error = "获取数据失败，请检查网络连接或稍后重试";
-        console.error("获取数据失败:", err);
-      } finally {
+      getLinks().then((response) => {
+        this.links = response;
         this.loading = false;
-      }
+        if (this.links.length == 0) {
+          this.error = "暂无数据";
+        }
+      });
     },
     navigateToLink(url) {
       this.currentUrl = url;
