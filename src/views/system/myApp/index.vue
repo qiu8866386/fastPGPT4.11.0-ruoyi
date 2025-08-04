@@ -18,8 +18,8 @@ export default {
     };
   },
   created() {
-    this.loading = true; // 开始加载时，显示遮罩层
-    this.url = "http://192.168.10.171:3000";
+    // this.loading = true; // 开始加载时，显示遮罩层
+    this.url = "http://192.168.10.171:3000/dashboard/apps";
     // toFastGpt()
     //   .then((res) => {
     //     this.url = res.url; // 请求成功后更新 url
