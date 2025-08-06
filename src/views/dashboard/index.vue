@@ -24,7 +24,12 @@
         </div>
 
         <div class="box-footer">
-          {{ link.App_updateTime.split("T")[0] }}
+          <div class="box-footer-left">
+            {{ link.Creator_name }}
+          </div>
+          <div class="box-footer-right">
+            {{ link.App_updateTime.split("T")[0] }}
+          </div>
         </div>
       </div>
     </div>
@@ -222,6 +227,17 @@ export default {
     line-height: 200%;
     font-size: 12px;
     color: #888;
+    display: flex;
+    .box-footer-left {
+      width: 50%;
+      height: 100%;
+      text-align: left;
+    }
+    .box-footer-right {
+      width: 50%;
+      height: 100%;
+      text-align: right;
+    }
   }
 }
 </style>
