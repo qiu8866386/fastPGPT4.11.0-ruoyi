@@ -16,7 +16,7 @@
     >
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar />
-        <tags-view v-if="needTagsView && !isHomePage" />
+        <tags-view v-if="needTagsView" />
       </div>
       <app-main />
       <right-panel>
@@ -37,7 +37,7 @@ export default {
   name: "Layout",
   data() {
     return {
-      isHomePage: false,
+      // isHomePage: false,
     };
   },
   components: {
@@ -48,14 +48,14 @@ export default {
     Sidebar,
     TagsView,
   },
-  watch: {
-    $route: {
-      immediate: true, // 进入页面立即执行
-      handler(newVal) {
-        this.checkIsHome(newVal.path);
-      },
-    },
-  },
+  // watch: {
+  //   $route: {
+  //     immediate: true, // 进入页面立即执行
+  //     handler(newVal) {
+  //       this.checkIsHome(newVal.path);
+  //     },
+  //   },
+  // },
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
@@ -82,10 +82,10 @@ export default {
     handleClickOutside() {
       this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
     },
-    checkIsHome(path) {
-      console.log("当前路径:", path);
-      this.isHomePage = path === "/index"; // 根据你的首页路径判断
-    },
+    // checkIsHome(path) {
+    //   // console.log("当前路径:", path);
+    //   this.isHomePage = path === "/index"; // 根据你的首页路径判断
+    // },
   },
 };
 </script>

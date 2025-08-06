@@ -5,6 +5,7 @@
       frameborder="no"
       style="width: 100%; height: 100%"
       scrolling="auto"
+      sandbox="allow-scripts allow-same-origin"
     />
   </div>
 </template>

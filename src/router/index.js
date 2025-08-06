@@ -70,24 +70,24 @@ export const constantRoutes = [
         path: "index",
         component: () => import("@/views/dashboard/index"),
         name: "Index",
-        meta: { title: "应用列表", icon: "dashboard", affix: true },
+        meta: { title: "团队应用", icon: "dashboard", affix: true },
       },
     ],
   },
-  {
-    path: "/user",
-    component: Layout,
-    hidden: true,
-    redirect: "noredirect",
-    children: [
-      {
-        path: "profile",
-        component: () => import("@/views/system/user/profile/index"),
-        name: "Profile",
-        meta: { title: "个人中心", icon: "user" },
-      },
-    ],
-  },
+  // {
+  //   path: "/user",
+  //   component: Layout,
+  //   hidden: true,
+  //   redirect: "noredirect",
+  //   children: [
+  //     {
+  //       path: "profile",
+  //       component: () => import("@/views/system/user/profile/index"),
+  //       name: "Profile",
+  //       meta: { title: "个人中心", icon: "user" },
+  //     },
+  //   ],
+  // },
 ];
 
 // 动态路由，基于用户权限动态去加载

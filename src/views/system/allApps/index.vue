@@ -30,11 +30,11 @@
     </div>
 
     <div v-else class="fastGPT">
-      <el-row class="button-row">
+      <!-- <el-row class="button-row">
         <el-button @click="aa" type="primary" class="back-btn">
-          返回应用列表
+          返回团队应用
         </el-button>
-      </el-row>
+      </el-row> -->
       <iframe
         :src="currentUrl"
         class="iframe"
@@ -47,6 +47,7 @@
 <script>
 // import axios from "axios";
 import { getLinks } from "@/api/toFastGPT";
+
 export default {
   data() {
     return {
@@ -56,7 +57,6 @@ export default {
       open: true,
       currentUrl: null,
       defaultIcon: require("@/assets/svg/workflowFill.svg"),
-      deptId: null,
     };
   },
   // 添加路由名称计算属性，用于判断是否为首页
@@ -72,8 +72,8 @@ export default {
   },
 
   mounted() {
-    this.deptId = this.$store.state.user.dept.deptId;
     this.fetchLinks();
+    //
   },
   watch: {
     "$store.state.app.sidebar.opened"(newVal) {
@@ -85,11 +85,7 @@ export default {
     fetchLinks() {
       this.loading = true;
       this.error = null;
-      const params = {};
-      if (this.deptId) {
-        params.team_name = this.deptId;
-      }
-      getLinks(params).then((response) => {
+      getLinks().then((response) => {
         this.links = response;
         this.loading = false;
         if (this.links.length == 0) {
@@ -109,9 +105,9 @@ export default {
 </script>
 <style scoped lang="less">
 .app-container {
-  height: calc(100vh - 52px);
+  height: calc(100vh - 30px);
   width: 100%;
-  padding: 0 10px;
+  padding: 0 0px;
   background: #f4f4f7;
   display: flex;
   flex-direction: column;

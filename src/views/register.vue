@@ -6,7 +6,7 @@
       :rules="registerRules"
       class="register-form"
     >
-      <h3 class="title">智能体服务平台</h3>
+      <h3 class="title">智能体应用中心</h3>
       <el-form-item prop="username">
         <el-input
           v-model="registerForm.username"

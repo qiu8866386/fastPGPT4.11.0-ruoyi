@@ -24,7 +24,7 @@
           <!-- 用户名和组织名 -->
           <div class="user-info">
             <span class="user-name"
-              >姓名：{{ this.$store.state.user.name }}</span
+              >账号：{{ this.$store.state.user.name }}</span
             >
           </div>
 
@@ -107,23 +107,23 @@ export default {
     // console.log(999999, this.$store.state.user);
   },
   mounted() {
-    this.handleRouteChange(this.$route.path); // 页面首次加载时判断
+    // this.handleRouteChange(this.$route.path); // 页面首次加载时判断
   },
-  watch: {
-    "$route.path"(newPath) {
-      this.handleRouteChange(newPath); // 每次路由变化时判断
-    },
-  },
+  // watch: {
+  //   "$route.path"(newPath) {
+  //     this.handleRouteChange(newPath); // 每次路由变化时判断
+  //   },
+  // },
   methods: {
     toggleSideBar() {
       this.$store.dispatch("app/toggleSideBar");
     },
-    handleRouteChange(path) {
-      if (path === "/index") {
-        // 首页：关闭侧边栏（hamburger）
-        this.$store.dispatch("app/closeSideBar", { withoutAnimation: true });
-      }
-    },
+    // handleRouteChange(path) {
+    //   if (path === "/index") {
+    //     // 首页：关闭侧边栏（hamburger）
+    //     this.$store.dispatch("app/closeSideBar", { withoutAnimation: true });
+    //   }
+    // },
     async logout() {
       this.$confirm("确定注销并退出系统吗？", "提示", {
         confirmButtonText: "确定",

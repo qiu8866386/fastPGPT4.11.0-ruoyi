@@ -1,7 +1,7 @@
 {
   "name": "vfadmin",
   "version": "1.6.2",
-  "description": "智能体服务平台",
+  "description": "智能体应用中心",
   "author": "insistence",
   "license": "MIT",
   "scripts": {

@@ -30,11 +30,11 @@
     </div>
 
     <div v-else class="fastGPT">
-      <el-row class="button-row">
-        <el-button @click="aa" type="primary" class="back-btn">
-          返回应用列表
-        </el-button>
-      </el-row>
+      <!-- <el-row class="button-row"> -->
+      <!-- <el-button @click="aa" type="primary" class="back-btn">
+          返回团队应用
+        </el-button> -->
+      <!-- </el-row> -->
       <iframe
         :src="currentUrl"
         class="iframe"
@@ -57,6 +57,7 @@ export default {
       open: true,
       currentUrl: null,
       defaultIcon: require("@/assets/svg/workflowFill.svg"),
+      deptId: null,
     };
   },
   // 添加路由名称计算属性，用于判断是否为首页
@@ -72,6 +73,8 @@ export default {
   },
 
   mounted() {
+    this.deptId = this.$store.state.user.dept.deptId;
+    console.log("deptId", this.deptId);
     this.fetchLinks();
     //
   },
@@ -85,7 +88,10 @@ export default {
     fetchLinks() {
       this.loading = true;
       this.error = null;
-      getLinks().then((response) => {
+      const params = {
+        team_name: this.deptId,
+      };
+      getLinks(params).then((response) => {
         this.links = response;
         this.loading = false;
         if (this.links.length == 0) {
@@ -97,17 +103,17 @@ export default {
       this.currentUrl = url;
       this.open = false;
     },
-    aa() {
-      this.open = true;
-    },
+    // aa() {
+    //   this.open = true;
+    // },
   },
 };
 </script>
 <style scoped lang="less">
 .app-container {
-  height: calc(100vh - 52px);
+  height: calc(100vh - 30px);
   width: 100%;
-  padding: 0 10px;
+  padding: 0 0px;
   background: #f4f4f7;
   display: flex;
   flex-direction: column;

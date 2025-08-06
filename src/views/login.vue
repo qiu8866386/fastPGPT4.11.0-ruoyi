@@ -7,7 +7,7 @@
       :rules="loginRules"
       class="login-form"
     >
-      <h3 class="title">威海临港<br />政务智能体应用中心</h3>
+      <h3 class="title">智能体应用中心</h3>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"

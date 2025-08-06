@@ -2,7 +2,7 @@
   <div v-if="!item.hidden">
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path, onlyOneChild.query)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest} " @click="handleMenuClick(onlyOneChild)">
           <item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
         </el-menu-item>
       </app-link>
@@ -55,6 +55,15 @@ export default {
     return {}
   },
   methods: {
+    handleMenuClick(menuItem) {
+  const targetPath = this.resolvePath(menuItem.path).toString()
+  const currentPath = this.$route.path
+
+  if (targetPath === currentPath) {
+    // 如果是当前路由，则执行刷新操作
+    this.$router.replace({ path: '/redirect' + currentPath })
+  }
+},
     hasOneShowingChild(children = [], parent) {
       if (!children) {
         children = [];
